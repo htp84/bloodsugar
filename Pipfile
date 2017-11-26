@@ -5,6 +5,7 @@ verify_ssl = true
 [packages]
 pandas = "*"
 requests = "*"
+pymongo = "*"
 
 [dev-packages]
 pytest = "*"
@@ -13,3 +14,4 @@ matplotlib = "*"
 seaborn = "*"
 ipython = "*"
 ipykernel = "*"
+pylint = "*"

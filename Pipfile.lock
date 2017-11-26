@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "72be85cc3652b459236fac83f69805aab02e693b0b2cf10341a06ee841ca0ae2"
+            "sha256": "f9ca3bf9e99bb9c3e8434b859eccfa0e868f951f24abcad6a47d993ce4f73e72"
         },
         "requires": {},
         "sources": [
@@ -27,6 +27,9 @@
         "pandas": {
             "version": "==0.21.0"
         },
+        "pymongo": {
+            "version": "==3.5.1"
+        },
         "python-dateutil": {
             "version": "==2.6.1"
         },
@@ -46,6 +49,9 @@
     "develop": {
         "bleach": {
             "version": "==2.1.1"
+        },
+        "cycler": {
+            "version": "==0.10.0"
         },
         "decorator": {
             "version": "==4.1.2"
@@ -92,6 +98,9 @@
         "markupsafe": {
             "version": "==1.0"
         },
+        "matplotlib": {
+            "version": "==2.1.0"
+        },
         "mistune": {
             "version": "==0.8.1"
         },
@@ -103,6 +112,9 @@
         },
         "notebook": {
             "version": "==5.2.1"
+        },
+        "numpy": {
+            "version": "==1.13.3"
         },
         "pandocfilters": {
             "version": "==1.4.2"
@@ -128,11 +140,17 @@
         "pygments": {
             "version": "==2.2.0"
         },
+        "pyparsing": {
+            "version": "==2.2.0"
+        },
         "pytest": {
             "version": "==3.2.5"
         },
         "python-dateutil": {
             "version": "==2.6.1"
+        },
+        "pytz": {
+            "version": "==2017.3"
         },
         "pyzmq": {
             "version": "==16.0.3"
@@ -140,8 +158,11 @@
         "qtconsole": {
             "version": "==4.3.1"
         },
+        "seaborn": {
+            "version": "==0.8.1"
+        },
         "setuptools": {
-            "version": "==38.1.0"
+            "version": "==38.2.0"
         },
         "simplegeneric": {
             "version": "==0.8.1"
