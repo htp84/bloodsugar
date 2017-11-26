@@ -1,4 +1,6 @@
 .vscode/
 src/secrets.py
 src/__pycache__/
+*.ipynb*
+
 

@@ -1,0 +1,174 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "72be85cc3652b459236fac83f69805aab02e693b0b2cf10341a06ee841ca0ae2"
+        },
+        "requires": {},
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "certifi": {
+            "version": "==2017.11.5"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
+        "idna": {
+            "version": "==2.6"
+        },
+        "numpy": {
+            "version": "==1.13.3"
+        },
+        "pandas": {
+            "version": "==0.21.0"
+        },
+        "python-dateutil": {
+            "version": "==2.6.1"
+        },
+        "pytz": {
+            "version": "==2017.3"
+        },
+        "requests": {
+            "version": "==2.18.4"
+        },
+        "six": {
+            "version": "==1.11.0"
+        },
+        "urllib3": {
+            "version": "==1.22"
+        }
+    },
+    "develop": {
+        "bleach": {
+            "version": "==2.1.1"
+        },
+        "decorator": {
+            "version": "==4.1.2"
+        },
+        "entrypoints": {
+            "version": "==0.2.3"
+        },
+        "html5lib": {
+            "version": "==1.0b10"
+        },
+        "ipykernel": {
+            "version": "==4.6.1"
+        },
+        "ipython": {
+            "version": "==6.2.1"
+        },
+        "ipython-genutils": {
+            "version": "==0.2.0"
+        },
+        "ipywidgets": {
+            "version": "==7.0.5"
+        },
+        "jedi": {
+            "version": "==0.11.0"
+        },
+        "jinja2": {
+            "version": "==2.10"
+        },
+        "jsonschema": {
+            "version": "==2.6.0"
+        },
+        "jupyter": {
+            "version": "==1.0.0"
+        },
+        "jupyter-client": {
+            "version": "==5.1.0"
+        },
+        "jupyter-console": {
+            "version": "==5.2.0"
+        },
+        "jupyter-core": {
+            "version": "==4.4.0"
+        },
+        "markupsafe": {
+            "version": "==1.0"
+        },
+        "mistune": {
+            "version": "==0.8.1"
+        },
+        "nbconvert": {
+            "version": "==5.3.1"
+        },
+        "nbformat": {
+            "version": "==4.4.0"
+        },
+        "notebook": {
+            "version": "==5.2.1"
+        },
+        "pandocfilters": {
+            "version": "==1.4.2"
+        },
+        "parso": {
+            "version": "==0.1.0"
+        },
+        "pexpect": {
+            "version": "==4.3.0"
+        },
+        "pickleshare": {
+            "version": "==0.7.4"
+        },
+        "prompt-toolkit": {
+            "version": "==1.0.15"
+        },
+        "ptyprocess": {
+            "version": "==0.5.2"
+        },
+        "py": {
+            "version": "==1.5.2"
+        },
+        "pygments": {
+            "version": "==2.2.0"
+        },
+        "pytest": {
+            "version": "==3.2.5"
+        },
+        "python-dateutil": {
+            "version": "==2.6.1"
+        },
+        "pyzmq": {
+            "version": "==16.0.3"
+        },
+        "qtconsole": {
+            "version": "==4.3.1"
+        },
+        "setuptools": {
+            "version": "==38.1.0"
+        },
+        "simplegeneric": {
+            "version": "==0.8.1"
+        },
+        "six": {
+            "version": "==1.11.0"
+        },
+        "terminado": {
+            "version": "==0.7"
+        },
+        "testpath": {
+            "version": "==0.3.1"
+        },
+        "tornado": {
+            "version": "==4.5.2"
+        },
+        "traitlets": {
+            "version": "==4.3.2"
+        },
+        "wcwidth": {
+            "version": "==0.1.7"
+        },
+        "webencodings": {
+            "version": "==0.5.1"
+        },
+        "widgetsnbextension": {
+            "version": "==3.0.8"
+        }
+    }
+}

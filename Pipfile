@@ -5,3 +5,11 @@ verify_ssl = true
 [packages]
 pandas = "*"
 requests = "*"
+
+[dev-packages]
+pytest = "*"
+jupyter = "*"
+matplotlib = "*"
+seaborn = "*"
+ipython = "*"
+ipykernel = "*"
