@@ -14,6 +14,7 @@ dash-renderer = "==0.11.1"
 dash-html-components = "==0.8.0"
 dash-core-components = "==0.14.0"
 plotly = "*"
+dash-table-experiments = "*"
 
 
 [dev-packages]
@@ -25,3 +26,4 @@ seaborn = "*"
 ipython = "*"
 ipykernel = "*"
 pylint = "*"
+"autopep8" = "*"
