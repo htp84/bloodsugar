@@ -1,5 +1,5 @@
 import dash
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output, State, Event
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table_experiments as dt
@@ -16,7 +16,7 @@ app.scripts.config.serve_locally = True
 
 df = data(CONN_STR)
 dateparts = ['minute', 'hour', 'day', 'week', 'month', 'quarter', 'year']
-df1 = bloodsugar_describe(df, 'hour')
+df1 = bloodsugar_describe(df, 'week')
 #print(df1.head())
 
 app.layout = html.Div([
@@ -45,18 +45,24 @@ app.layout = html.Div([
         min_height=1000,
         min_width=1000
     ),
+    dcc.Interval(
+        id='interval-component',
+        interval=1*60000 # in milliseconds
+    ),
     html.Div(id='selected-indexes'),
     dcc.Graph(
         id='graph-bloodsugar-describe'
-    ),
+    )
 ], className="container")
 
 @app.callback(
     dash.dependencies.Output('datatable-bloodsugar-describe', 'rows'),
     [dash.dependencies.Input('dropdown-datepart', 'value'),
-    dash.dependencies.Input('input-startdate', 'value')])
+    dash.dependencies.Input('input-startdate', 'value')],
+    events=[Event('interval-component', 'interval')])
 def update_table(datepart, startdate):
     print(startdate)
+    df = data(CONN_STR)
     rows = bloodsugar_describe(df, datepart, startdate=str(startdate)).to_dict('records')
     return rows
 
