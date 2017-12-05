@@ -1,6 +1,6 @@
-.vscode/
+*.vscode/
 src/secrets.py
-src/__pycache__/
+*__pycache__/
 *.ipynb*
 bulk/
 .env

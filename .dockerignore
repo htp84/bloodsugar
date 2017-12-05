@@ -4,3 +4,5 @@ src/__pycache__/
 *.ipynb*
 bulk/
 .env
+.cache
+.git
