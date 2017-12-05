@@ -15,6 +15,8 @@ dash-html-components = "==0.8.0"
 dash-core-components = "==0.14.0"
 plotly = "*"
 dash-table-experiments = "*"
+matplotlib = "*"
+seaborn = "*"
 
 
 [dev-packages]

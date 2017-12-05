@@ -89,6 +89,5 @@ def bloodsugar_describe(df: pd.DataFrame, datepart: str, **kwargs):
         df = df[(df['date1'] > start) & (df['date1'] <= end)]
     
     df = df.groupby(getattr(df.date1.dt, datepart))['mmol'].describe().reset_index().round(2)
-
         
     return df
