@@ -12,7 +12,7 @@ from apps.src.secrets import CONN_STR
 import datetime
 from app import app
 
-startdate = datetime.date.today() - datetime.timedelta(days=7)
+startdate = datetime.date.today() - datetime.timedelta(days=2)
 df = data(CONN_STR, startdate=str(startdate))
 df1 = bloodsugar_describe(df, 'week')
 #print(df1.head())

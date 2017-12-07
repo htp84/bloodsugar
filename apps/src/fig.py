@@ -1,13 +1,19 @@
 import plotly.graph_objs as go
-import plotly.plotly as py
+import numpy as np
 #import matplotlib.pyplot as plt
 #import seaborn as sns
 
-def scatter_(df):
+def scatter_(df, datepart=None):
+    if datepart:
+        df[datepart] = getattr(df.date1.dt, datepart)
+        df[datepart] = df[datepart].apply(lambda n: n+(np.random.uniform(-0.5, 0.4)))
+        x = datepart
+    else:
+        x = 'date1'
     return {'data': [go.Scatter(
-            x=df['date1'],
+            x=df[x],
             y=df['mmol'],
-            text=df['date1'],
+            text='scatter',
             mode='markers',
             marker={
                 'size': 15,
@@ -32,7 +38,47 @@ def histogram_(df):
          ]
     }
 
+def boxplot_(df, datepart=None):
+    if datepart:
+        df[datepart] = getattr(df.date1.dt, datepart)
+        #df[datepart] = df[datepart].apply(lambda n: n+(np.random.uniform(-0.5, 0.4)))
+        x = datepart
+    else:
+        x = 'weekday'
+    x_data = sorted(df[datepart].unique())
+    y_data = []
+    for i in x_data:
+        y_data.append(list(df[df[datepart]==i]['mmol'].tolist()))
+    #print(x_data)
+    #print(y_data)
+    weekday = {0: 'Söndag',
+               1: 'Måndag',
+               2: 'Tisdag',
+               3: 'Onsdag',
+               4: 'Torsdag',
+               5: 'Fredag',
+               6: 'Lördag'}
+    traces = []
+    if datepart=='weekday':
 
+        for xd, yd in zip(x_data, y_data):
+            traces.append(go.Box(
+                y=yd,
+                name= weekday.get(xd)
+                )
+            )
+    else:
+        for xd, yd in zip(x_data, y_data):
+            traces.append(go.Box(
+                y=yd,
+                name= xd
+                )
+            )
+
+    #print(traces)
+    #källa boxplot= https://plot.ly/python/box-plots/#fully-styled-box-plots se längs ner på sidan
+    return {'data': traces
+            }
 #def histogram__(df):
 #    fig = sns.distplot(df['mmol'], kde=False, bins=15)
 #    plt.savefig('test.png')
