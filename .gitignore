@@ -4,6 +4,6 @@ src/secrets.py
 *.ipynb*
 bulk/
 .env
-Docker*
-*docker
+Dockerfile
+.docker*
 
