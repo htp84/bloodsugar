@@ -1,8 +1,0 @@
-.vscode/
-src/secrets.py
-src/__pycache__/
-*.ipynb*
-bulk/
-.env
-.cache
-.git
