@@ -12,9 +12,9 @@ from apps.src.secrets import CONN_STR
 import datetime
 from app import app
 
-startdate = datetime.date.today() - datetime.timedelta(days=2)
+startdate = datetime.date.today() - datetime.timedelta(hours=6)
 df = data(CONN_STR, startdate=str(startdate))
-df1 = bloodsugar_describe(df, 'week')
+#df1 = bloodsugar_describe(df, 'week')
 #print(df1.head())
 dfb = data(CONN_STR, latest=True)
 blood_sugar = dfb.at[0, 'mmol']

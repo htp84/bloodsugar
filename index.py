@@ -14,18 +14,13 @@ app.layout = html.Div([
 
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
-def display_page(pathname):
-    #print(pathname)
-    #return app2.layout
-    #print(pathname)
-    #print('hej')
-    ##return app2.layout
+def display_page(pathname): 
     if pathname == '/apps/app1':
-         return app1.layout
+        return app1.layout
     elif pathname == '/apps/app2':
-         return app2.layout
+        return app2.layout
     else:
-        return '404'
+        return app1.layout
 
 app.css.append_css({
     "external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"
