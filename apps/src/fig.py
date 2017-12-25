@@ -51,13 +51,13 @@ def boxplot_(df, datepart=None):
         y_data.append(list(df[df[datepart]==i]['mmol'].tolist()))
     #print(x_data)
     #print(y_data)
-    weekday = {0: 'Söndag',
-               1: 'Måndag',
-               2: 'Tisdag',
-               3: 'Onsdag',
-               4: 'Torsdag',
-               5: 'Fredag',
-               6: 'Lördag'}
+    weekday = {0: 'Måndag',
+               1: 'Tisdag',
+               2: 'Onsdag',
+               3: 'Torsdag',
+               4: 'Fredag',
+               5: 'Lördag',
+               6: 'Söndag',}
     traces = []
     if datepart=='weekday':
 
