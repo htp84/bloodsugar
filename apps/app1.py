@@ -41,7 +41,7 @@ layout = html.Div([
     ], style={'width': '100%', 'display': 'inline-block', 'padding': '0 20'}),
     dcc.Interval(
         id='interval-component',
-        interval=1*4000#60000 # in milliseconds
+        interval=1*60000 # in milliseconds
     ), dcc.Link('Go to App 2', href='/apps/app2')
 ], className="container")
 
