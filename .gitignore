@@ -5,5 +5,6 @@ src/secrets.py
 bulk/
 .env
 docker/*
-apps/app1org.py
-Pipfile*
+apps/src/app1org.py
+Pipfile
+Pipfile.lock

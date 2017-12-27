@@ -12,31 +12,22 @@ from apps.src.secrets import CONN_STR
 import datetime
 from app import app
 
-startdate = datetime.date.today() - datetime.timedelta(days=1)
-df = data(CONN_STR, startdate=str(startdate))
-#df1 = bloodsugar_describe(df, 'week')
-#print(df1.head())
-dfb = data(CONN_STR, latest=True)
-blood_sugar = dfb.at[0, 'mmol']
-style = style_(blood_sugar)
-time = dfb.at[0, 'min_diff']
 style_time= style_()
 
 layout = html.Div([
     html.H4('Blodsocker'),
     html.Div(
-        [html.Span('Blodsocker: {0:.2f}'.format(blood_sugar), style=style)],
+        [html.Span('Blodsocker: {0:.2f}'.format(data(CONN_STR, latest=True).at[0, 'mmol']), style=style_(data(CONN_STR, latest=True).at[0, 'mmol']))],
     id='current-bloodsugar',    
     ),
     html.Div(
-        [html.Span(f'Tid: {time} min', style=style_time)],
+        [html.Span('Tid: {0:.2f}'.format(data(CONN_STR, latest=True).at[0, 'min_diff']), style=style_time)],
     id='time-since-update',
     ),
     html.Div([
         dcc.Graph(
             id='graph-bloodsugar-describe',
-            hoverData={'points': [{'customdata': 'Japan'}]},
-            figure=scatter_(df)
+            figure=scatter_(data(CONN_STR, startdate=str(datetime.date.today() - datetime.timedelta(days=1))))
         )
     ], style={'width': '100%', 'display': 'inline-block', 'padding': '0 20'}),
     dcc.Interval(
@@ -69,7 +60,8 @@ def update_time():
     Output('graph-bloodsugar-describe', 'figure'),
     events=[Event('interval-component', 'interval')])
 def update_graph():
-    df = data(CONN_STR, startdate=str(startdate))
+    startdate = str(datetime.date.today() - datetime.timedelta(days=1))
+    df = data(CONN_STR, startdate=startdate)
     return scatter_(df)
 
 

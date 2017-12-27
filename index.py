@@ -7,7 +7,7 @@ from apps import app2, app1
 
 
 app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
+    dcc.Location(id='url', refresh=False), # maybe true?
     html.Div(id='page-content')
 ])
 
@@ -22,9 +22,13 @@ def display_page(pathname):
     else:
         return app1.layout
 
+app.callback(
+    Output()
+)
+
 app.css.append_css({
     "external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"
 })
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0')
+    app.run_server(debug=True, host='0.0.0.0')
