@@ -17,6 +17,7 @@ plotly = "*"
 dash-table-experiments = "*"
 matplotlib = "*"
 seaborn = "*"
+pendulum = "*"
 
 
 [dev-packages]
