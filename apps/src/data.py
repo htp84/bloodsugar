@@ -7,6 +7,8 @@ import requests
 import pandas as pd
 import numpy as np
 from pandas.io.json import json_normalize
+import pendulum
+from dateutil import parser
 
 def data(CONN_STR, **kwargs):
     """
@@ -25,7 +27,10 @@ def data(CONN_STR, **kwargs):
         df['date1'] = pd.to_datetime(df.dateString)
         x = pd.to_timedelta(1, 'h')
         df.date1 = df.date1 + x
-        df['min_diff'] =  (datetime.now() - df['date1']).dt.seconds // 60
+        now = pendulum.now()
+        tz = pendulum.timezone('Europe/Stockholm')
+        now_tz = parser.parse(tz.convert(now).to_datetime_string())
+        df['min_diff'] =  (now_tz - df['date1']).dt.seconds // 60
         return df
     if all_data:
         all_data = list(entries.find())
