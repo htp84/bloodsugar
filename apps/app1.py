@@ -62,7 +62,7 @@ def update_time():
     df = data(CONN_STR, latest=True) 
     time = df.at[0, 'min_diff']
     return [
-        html.Span('Tid: {0:.2f}'.format(time), style=style_time),
+        html.Span(f'Tid: {time} min', style=style_time),
     ]
 
 @app.callback(
