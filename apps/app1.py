@@ -12,24 +12,16 @@ from apps.src.secrets import CONN_STR
 import datetime
 from app import app
 
-startdate = datetime.date.today() - datetime.timedelta(days=1)
-df = data(CONN_STR, time_unit='h', amount=6)
-#df1 = bloodsugar_describe(df, 'week')
-#print(df1.head())
-dfb = data(CONN_STR, latest=True)
-blood_sugar = dfb.at[0, 'mmol']
-style = style_(blood_sugar)
-time = dfb.at[0, 'min_diff']
 style_time= style_()
 
 layout = html.Div([
     html.H4('Blodsocker'),
     html.Div(
-        [html.Span('Blodsocker: {0:.2f}'.format(blood_sugar), style=style)],
-    id='current-bloodsugar',    
+        [html.Span('Blodsocker: ')],
+    id='current-bloodsugar'
     ),
     html.Div(
-        [html.Span(f'Tid: {time} min', style=style_time)],
+        [html.Span(f'Tid: min', style=style_time)],
     id='time-since-update',
     ),
     html.Label('Timmar'),
@@ -47,8 +39,8 @@ layout = html.Div([
     html.Div([
         dcc.Graph(
             id='graph-bloodsugar',
-            hoverData={'points': [{'customdata': 'Japan'}]},
-            figure=scatter_(df)
+            hoverData={'points': [{'customdata': 'Japan'}]}
+            #figure=scatter_(df)
         )
     ], style={'width': '100%', 'display': 'inline-block', 'padding': '0 20'}),
     dcc.Interval(
@@ -58,8 +50,9 @@ layout = html.Div([
 ], className="container")
 
 @app.callback(Output('current-bloodsugar', 'children'),
+              [Input('radio-amount', 'value')],
               events=[Event('interval-component', 'interval')])
-def update_blood():
+def update_blood(update):
     df = data(CONN_STR, latest=True)
     blood_sugar = df.at[0, 'mmol']
     style = style_(blood_sugar)
@@ -69,8 +62,9 @@ def update_blood():
 
 
 @app.callback(Output('time-since-update', 'children'),
+              [Input('radio-amount', 'value')],
               events=[Event('interval-component', 'interval')])
-def update_time():
+def update_time(update):
     df = data(CONN_STR, latest=True) 
     time = df.at[0, 'min_diff']
     return [
