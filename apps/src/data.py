@@ -10,7 +10,7 @@ from pandas.io.json import json_normalize
 import pendulum
 from dateutil import parser
 
-def data(CONN_STR, **kwargs):
+def data(CONN_STR: str, **kwargs):
     """
     måste skriva om denna så den ställer frågan mot db gällande datum, dumt att ladda all data hela tiden
     """
