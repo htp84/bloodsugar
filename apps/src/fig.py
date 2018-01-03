@@ -23,9 +23,10 @@ def scatter_(df, datepart=None):
             }
         )],
         'layout': go.Layout(
-            margin={'l': 10, 'b': 30, 't': 10, 'r': 0},
+            margin={'l': 20, 'b': 30, 't': 10, 'r': 0},
             height=600,
-            hovermode='closest'
+            hovermode='closest',
+            yaxis={'range': [1.5, 16]}
         )
     }
 
@@ -34,18 +35,30 @@ def histogram_(df):
     #fig = sns.distplot(df['mmol'], kde=False, bins=15)
     return {'data': [go.Histogram(
                     x=df['mmol'],
+                    nbinsx=12
                     )
          ]
     }
 
 def boxplot_(df, datepart=None):
+    layout = go.Layout(
+    autosize=True,
+    #width=500,
+    height=800,
+    margin=go.Margin(
+        l=50,
+        r=50,
+        b=100,
+        t=100,
+        pad=4
+    ))
     if datepart:
         df[datepart] = getattr(df.date1.dt, datepart)
         #df[datepart] = df[datepart].apply(lambda n: n+(np.random.uniform(-0.5, 0.4)))
         x = datepart
     else:
         x = 'weekday'
-    x_data = sorted(df[datepart].unique())
+    x_data = sorted(df[datepart].unique(), reverse=True)
     y_data = []
     for i in x_data:
         y_data.append(list(df[df[datepart]==i]['mmol'].tolist()))
@@ -63,21 +76,24 @@ def boxplot_(df, datepart=None):
 
         for xd, yd in zip(x_data, y_data):
             traces.append(go.Box(
-                y=yd,
-                name= weekday.get(xd)
+                x=yd,
+                name= weekday.get(xd),
+                boxmean='sd'
                 )
             )
     else:
         for xd, yd in zip(x_data, y_data):
             traces.append(go.Box(
-                y=yd,
-                name= xd
+                x=yd,
+                name=xd,
+                boxmean='sd'
                 )
             )
 
     #print(traces)
     #källa boxplot= https://plot.ly/python/box-plots/#fully-styled-box-plots se längs ner på sidan
-    return {'data': traces
+    return {'data': traces,
+            'layout': layout
             }
 #def histogram__(df):
 #    fig = sns.distplot(df['mmol'], kde=False, bins=15)
