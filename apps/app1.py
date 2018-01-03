@@ -13,7 +13,7 @@ import datetime
 from app import app
 
 startdate = datetime.date.today() - datetime.timedelta(days=1)
-df = data(CONN_STR, startdate=str(startdate))
+df = data(CONN_STR, time_unit='h', amount=6)
 #df1 = bloodsugar_describe(df, 'week')
 #print(df1.head())
 dfb = data(CONN_STR, latest=True)
@@ -32,9 +32,21 @@ layout = html.Div([
         [html.Span(f'Tid: {time} min', style=style_time)],
     id='time-since-update',
     ),
+    html.Label('Timmar'),
+    dcc.RadioItems(
+        options=[
+            {'label': '1h', 'value': 1},
+            {'label': '3h', 'value': 3},
+            {'label': '6h', 'value': 6},
+        ],
+        value=6,
+        id='radio-amount'
+    ),
+    html.Label('Text Input'),
+    dcc.Input(value='', type='text', id='text-amount'),
     html.Div([
         dcc.Graph(
-            id='graph-bloodsugar-describe',
+            id='graph-bloodsugar',
             hoverData={'points': [{'customdata': 'Japan'}]},
             figure=scatter_(df)
         )
@@ -66,10 +78,19 @@ def update_time():
     ]
 
 @app.callback(
-    Output('graph-bloodsugar-describe', 'figure'),
+    Output('graph-bloodsugar', 'figure'),
+    [Input('radio-amount', 'value'),
+    Input('text-amount', 'value')],
     events=[Event('interval-component', 'interval')])
-def update_graph():
-    df = data(CONN_STR, startdate=str(startdate))
+def update_graph(hours_radio=None, hours_text=None):
+    if hours_text:
+        try:
+            hours_text = int(hours_text)
+            df = data(CONN_STR, time_unit='h', amount=int(hours_text))
+        except:
+            df = data(CONN_STR, time_unit='h', amount=hours_radio)
+    else:
+        df = data(CONN_STR, time_unit='h', amount=hours_radio)
     return scatter_(df)
 
 
