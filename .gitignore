@@ -7,3 +7,6 @@ bulk/
 docker/*
 apps/app1org.py
 Pipfile*
+.dockerignore
+Dockerfile
+*.whl
